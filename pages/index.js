@@ -9,7 +9,7 @@ export default function Home() {
   const [weather, setWeather] = useState({});
   const [loading, setLoading] = useState(false);
 
-  const URL = `https://api.openweathermap.org/data/2.5/weather?q=dubai&appid=${process.env.NEXT_PUBLIC_WEATHER_KEY}`;
+  const URL = `https://api.openweathermap.org/data/2.5/weather?q=dubai&units=imperial&appid=${process.env.NEXT_PUBLIC_WEATHER_KEY}`;
 
   const fetchWeather = (e) => {
     e.preventDefault()
@@ -30,7 +30,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <h1>Hey!</h1>
-      <button className="p-2 bg-red-500 rounded-lg shadow-lg" onClick={fetchWeather} >Fetch data</button>
+      <button className="p-2 bg-red-600 rounded-lg shadow-lg" onClick={fetchWeather} >Fetch data</button>
     </div>
   );
 }

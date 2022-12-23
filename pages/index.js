@@ -1,4 +1,7 @@
 import Head from 'next/head'
+import axios from 'axios'
+import { useState } from 'react'
+import {BsSearch} from 'react-icons/bs'
 
 export default function Home() {
 

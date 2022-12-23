@@ -1,12 +1,26 @@
-import Head from 'next/head'
-import axios from 'axios'
-import { useState } from 'react'
-import {BsSearch} from 'react-icons/bs'
+import Head from "next/head";
+import axios from "axios";
+import { useState } from "react";
+import { BsSearch } from "react-icons/bs";
 
 export default function Home() {
 
-  const URL = `https://api.openweathermap.org/data/2.5/weather?q=dubai&appid=${process.env.NEXT_PUBLIC_WEATHER_KEY}`
+  const [city, setCity] = useState("");
+  const [weather, setWeather] = useState({});
+  const [loading, setLoading] = useState(false);
 
+  const URL = `https://api.openweathermap.org/data/2.5/weather?q=dubai&appid=${process.env.NEXT_PUBLIC_WEATHER_KEY}`;
+
+  const fetchWeather = (e) => {
+    e.preventDefault()
+    setLoading(true)
+    axios.get(URL).then((res) => {
+      setWeather(res.data)
+      console.log(res.data);
+    })
+    setCity('')
+    setLoading(false)
+  }
 
   return (
     <div>
@@ -16,6 +30,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <h1>Hey!</h1>
+      <button className="p-2 bg-red-500 rounded-lg shadow-lg" onClick={fetchWeather} >Fetch data</button>
     </div>
-  )
+  );
 }

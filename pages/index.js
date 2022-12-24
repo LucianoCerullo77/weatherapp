@@ -42,6 +42,17 @@ export default function Home() {
         layout="fill"
         className="object-cover"
       />
+
+      <div className="relative flex justify-between items-center max-w-[600px] w-full m-auto pt-4 text-white z-10">
+        <form className="flex justify-between items-center w-full m-auto p-3 bg-transparent border border-gray-300 text-white rounded-2xl">
+          <div>
+            <input type="text" placeholder="Search City" />
+          </div>
+          <button onClick={fetchWeather}>
+            <BsSearch />
+          </button>
+        </form>
+      </div>
     </div>
   );
 }

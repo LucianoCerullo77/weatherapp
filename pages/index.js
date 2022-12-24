@@ -9,7 +9,7 @@ export default function Home() {
   const [weather, setWeather] = useState({});
   const [loading, setLoading] = useState(false);
 
-  const URL = `https://api.openweathermap.org/data/2.5/weather?q=dubai&units=imperial&appid=${process.env.NEXT_PUBLIC_WEATHER_KEY}`;
+  const URL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${process.env.NEXT_PUBLIC_WEATHER_KEY}`;
 
   const fetchWeather = (e) => {
     e.preventDefault();
@@ -21,6 +21,8 @@ export default function Home() {
     setCity("");
     setLoading(false);
   };
+
+  console.log(city);
 
   return (
     <div>
@@ -44,16 +46,17 @@ export default function Home() {
       />
 
       <div className="relative flex justify-between items-center max-w-[600px] w-full m-auto pt-4 text-white z-10">
-        <form className="flex justify-between items-center w-full m-auto p-3 bg-transparent border border-gray-300 text-white rounded-2xl">
+        <form onSubmit={fetchWeather} className="flex justify-between items-center w-full m-auto p-3 bg-transparent border border-gray-300 text-white rounded-2xl">
           <div>
             <input
+            onChange={(e) => setCity(e.target.value)}
               type="text"
               placeholder="Search City"
               className="bg-transparent border-none text-white focus:outline-none text-2xl placeholder:text-white/70"
             />
           </div>
           <button onClick={fetchWeather}>
-            <BsSearch />
+            <BsSearch size={20} />
           </button>
         </form>
       </div>

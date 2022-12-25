@@ -3,6 +3,8 @@ import axios from "axios";
 import { useState } from "react";
 import { BsSearch } from "react-icons/bs";
 import Image from "next/image";
+import Weather from "../components/Weather";
+import Spinner from "../components/Spinner";
 
 export default function Home() {
   const [city, setCity] = useState("");
@@ -22,7 +24,9 @@ export default function Home() {
     setLoading(false);
   };
 
-  console.log(city);
+  if(loading) {
+    
+  }
 
   return (
     <div>
@@ -39,10 +43,13 @@ export default function Home() {
       />
 
       <div className="relative flex justify-between items-center max-w-[600px] w-full m-auto pt-4 text-white z-10">
-        <form onSubmit={fetchWeather} className="flex justify-between items-center w-full m-auto p-3 bg-transparent border border-gray-300 text-white rounded-2xl">
+        <form
+          onSubmit={fetchWeather}
+          className="flex justify-between items-center w-full m-auto p-3 bg-transparent border border-gray-300 text-white rounded-2xl"
+        >
           <div>
             <input
-            onChange={(e) => setCity(e.target.value)}
+              onChange={(e) => setCity(e.target.value)}
               type="text"
               placeholder="Search City"
               className="bg-transparent border-none text-white focus:outline-none text-2xl placeholder:text-white/70"
@@ -53,6 +60,8 @@ export default function Home() {
           </button>
         </form>
       </div>
+
+      {weather.main && <Weather data={weather} />}
     </div>
   );
 }

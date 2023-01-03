@@ -1,5 +1,5 @@
 
-# Weather App - Luciano Cerullo
+# Weather App - Luciano Cerullo NextJs
 
 This is a Weather app maded with NextJS and TailwindCSS.
 
